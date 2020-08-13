@@ -1,0 +1,81 @@
+@base-margin: 20px;
+@base-padding: 10px;
+
+.timer_div {
+  width: 600px;
+
+  background: lightgray;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @base-padding;
+  padding-right: @base-padding;
+
+  height: 500px;
+
+  h1 {
+    padding-top: @base-padding * 3;
+    padding-bottom: @base-padding;
+  }
+
+  .timer_display_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    justify-items: center;
+
+    .setting_div {
+      margin-top: auto;
+      margin-bottom: auto;
+
+      .set_time_left_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: @base-margin;
+
+        label {
+          font-size: 1.5em;
+          margin-right: @base-margin
+        }
+
+        input {
+          height: 30px;
+        }
+      }
+
+      button {
+        width: 270px;
+
+        background: dodgerblue;
+        color: white;
+
+        font-size: 1.2em;
+
+        padding: @base-padding;
+      }
+    }
+
+    .show_div {
+      margin-top: auto;
+      margin-bottom: auto;
+
+      border-style: solid;
+
+      h1 {
+        font-size: 2em;
+
+        padding-left: @base-padding * 3;
+        padding-right: @base-padding * 3;
+      }
+    }
+  }
+
+  .back_home_link_timer {
+    margin-top: @base-margin;
+    margin-left: @base-padding;
+    float: left;
+    font-size: 1.4em;
+  }
+}
