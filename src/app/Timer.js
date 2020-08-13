@@ -4,7 +4,9 @@ import {Link} from "react-router-dom";
 
 class Timer extends React.Component {
   state = {
-    secondsLeft: 0
+    secondsLeft: 0,
+    isTiming: false,
+    label: 'Start',
   }
 
   render() {
@@ -15,13 +17,13 @@ class Timer extends React.Component {
           <div className={'setting_div'}>
             <div className={'set_time_left_div'}>
               <label htmlFor={'timeLeft'}>设置时间</label>
-              <input id={'timeLeft'} type={'number'} onChange={this.onTextChange} value={this.state.secondsLeft}/>
+              <input id={'timeLeft'} type={'number'} onChange={this.onTextChange} value={this.state.secondsLeft} disabled={this.state.isTiming}/>
             </div>
-            <button onClick={this.startTimer}>Start</button>
+            <button onClick={this.startTimer} disabled={this.state.isTiming}>Start</button>
           </div>
 
           <div className={'show_div'}>
-            <h1>{this.state.secondsLeft} Second{this.state.secondsLeft > 1 ? 's' : ' '}</h1>
+            <h1>{this.state.label}</h1>
           </div>
         </div>
         <Link className={'back_home_link_timer'} to={'/'}>回到主页</Link>
@@ -30,6 +32,10 @@ class Timer extends React.Component {
   }
 
   startTimer = () => {
+    this.setState({
+      isTiming: true,
+      label: `${this.state.secondsLeft} Second ${this.state.secondsLeft > 1 ? 's' : ' '}`,
+    })
     setTimeout(this.minusOneSecond, 1000);
   }
 
@@ -42,12 +48,16 @@ class Timer extends React.Component {
   minusOneSecond = () => {
     this.setState({
       secondsLeft: this.state.secondsLeft - 1,
+      label: `${this.state.secondsLeft - 1} Second ${this.state.secondsLeft - 1 > 1 ? 's' : ' '}`,
     });
 
     if (this.state.secondsLeft > 0) {
       setTimeout(this.minusOneSecond, 1000);
     } else {
-      alert("Time out!");
+      this.setState({
+        isTiming: false,
+        label: 'End',
+      })
     }
   }
 }
