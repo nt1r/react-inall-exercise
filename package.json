@@ -9,7 +9,8 @@
   "dependencies": {
     "react": ">=15",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.0.1",
+    "src": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
